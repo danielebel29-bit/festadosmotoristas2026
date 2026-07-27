@@ -76,7 +76,7 @@
             <div class="p-5 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-slate-50/50">
                 <div>
                     <h2 class="text-base font-bold text-slate-900">Detalhamento Diário de Vendas</h2>
-                    <p class="text-xs text-slate-500">Exibindo apenas produtos com quantidade vendida maior que zero</p>
+                    <p class="text-xs text-slate-500">Exibindo apenas produtos com quantidade vendida maior que zero (ordem alfabética)</p>
                 </div>
                 <div class="relative">
                     <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
@@ -165,10 +165,17 @@
             const headers = data[0]; // [Produto, ColD, ColE, ColF, ColG, ColH, TotalM]
             const rawRows = data.slice(1);
 
-            // Filtra apenas produtos com Quantidade Total (Coluna M / index 6) maior que 0
+            // 1. Filtra apenas produtos com Quantidade Total (Coluna M / index 6) maior que 0
             const activeRows = rawRows.filter(row => {
                 const totalQty = Number(row[6]) || 0;
                 return totalQty > 0;
+            });
+
+            // 2. Classifica em ordem alfabética (A-Z) pelo nome do produto (index 0)
+            activeRows.sort((a, b) => {
+                const nameA = (a[0] || '').toString().toLowerCase();
+                const nameB = (b[0] || '').toString().toLowerCase();
+                return nameA.localeCompare(nameB, 'pt-BR');
             });
 
             // Render Table Header
