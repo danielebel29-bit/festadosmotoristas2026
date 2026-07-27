@@ -71,20 +71,7 @@
             </div>
         </div>
 
-        <!-- Daily Chart Section -->
-        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-            <div class="flex items-center justify-between mb-4">
-                <div>
-                    <h2 class="text-base font-bold text-slate-900">Evolução de Vendas por Dia</h2>
-                    <p class="text-xs text-slate-500">Volume diário acumulado considerando as colunas D a H</p>
-                </div>
-            </div>
-            <div class="relative h-[280px] w-full">
-                <canvas id="chart-daily-sales"></canvas>
-            </div>
-        </div>
-
-        <!-- Clean Table Section -->
+        <!-- Clean Table Section (POSICIONADO AGORA NO INÍCIO) -->
         <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
             <div class="p-5 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-slate-50/50">
                 <div>
@@ -116,6 +103,19 @@
             </div>
         </div>
 
+        <!-- Daily Chart Section -->
+        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+            <div class="flex items-center justify-between mb-4">
+                <div>
+                    <h2 class="text-base font-bold text-slate-900">Evolução de Vendas por Dia</h2>
+                    <p class="text-xs text-slate-500">Volume diário acumulado considerando as colunas D a H</p>
+                </div>
+            </div>
+            <div class="relative h-[280px] w-full">
+                <canvas id="chart-daily-sales"></canvas>
+            </div>
+        </div>
+
     </main>
 
     <!-- Footer -->
@@ -126,7 +126,7 @@
     <!-- Application Script -->
     <script>
         // COLE O SEU LINK DA WEB APP DO APPS SCRIPT AQUI:
-        const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyuvA9V-65xnb7pth7-YcHolv9RTHmFSEu_JPzHASgzqWN1mM_oKzyV-jmuRSvShjLVwQ/exec';
+        const WEB_APP_URL = 'COLE_AQUI_O_LINK_DO_SEU_APPS_SCRIPT';
 
         let dailyChart = null;
 
