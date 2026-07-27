@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Festa dos Motoristas 2026</title>
+    <title>Festa dos Motoristas 2026</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -49,8 +49,8 @@
                     <i class="fa-solid fa-chart-line text-xl text-amber-400"></i>
                 </div>
                 <div>
-                    <h1 class="text-xl font-bold tracking-tight">Festa dos Motoristas 2026</h1>
-                    <p class="text-petroleo-200 text-xs font-medium">Painel de Gestão e Acompanhamento</p>
+                    <h1 class="text-xl font-bold tracking-tight">58ª Festa dos Motoristas</h1>
+                    <p class="text-petroleo-200 text-xs font-medium">2026</p>
                 </div>
             </div>
             <div class="flex items-center gap-3">
@@ -89,7 +89,7 @@
                     <div>
                         <p class="text-xs font-bold uppercase tracking-wider text-slate-400">Produto Mais Vendido</p>
                         <h3 id="kpi-top-product" class="text-2xl font-black text-slate-900 mt-1 truncate max-w-[280px]">--</h3>
-                        <p id="kpi-top-product-qty" class="text-xs font-medium text-petroleo-600 mt-1">-- unidades vendidas (Coluna M)</p>
+                        <p id="kpi-top-product-qty" class="text-xs font-medium text-petroleo-600 mt-1">-- unidades vendidas</p>
                     </div>
                     <div class="w-12 h-12 bg-amber-50 text-amber-500 rounded-xl flex items-center justify-center text-xl shrink-0">
                         <i class="fa-solid fa-trophy"></i>
@@ -100,7 +100,7 @@
                     <div>
                         <p class="text-xs font-bold uppercase tracking-wider text-slate-400">Dia de Maior Movimento</p>
                         <h3 id="kpi-peak-day" class="text-2xl font-black text-slate-900 mt-1">--</h3>
-                        <p id="kpi-peak-day-qty" class="text-xs font-medium text-emerald-600 mt-1">-- itens comercializados (Colunas D a H)</p>
+                        <p id="kpi-peak-day-qty" class="text-xs font-medium text-emerald-600 mt-1">-- itens comercializados</p>
                     </div>
                     <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center text-xl shrink-0">
                         <i class="fa-solid fa-calendar-day"></i>
@@ -113,7 +113,7 @@
                 <div class="p-5 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-slate-50/50">
                     <div>
                         <h2 class="text-base font-bold text-slate-900">Detalhamento Diário de Vendas</h2>
-                        <p class="text-xs text-slate-500">Exibindo apenas produtos com quantidade vendida maior que zero (ordem alfabética)</p>
+                        <p class="text-xs text-slate-500">(ordem alfabética)</p>
                     </div>
                     <div class="relative">
                         <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
@@ -145,7 +145,7 @@
                 <div class="flex items-center justify-between mb-4">
                     <div>
                         <h2 class="text-base font-bold text-slate-900">Evolução de Vendas por Dia</h2>
-                        <p class="text-xs text-slate-500">Volume diário acumulado considerando as colunas D a H</p>
+                        <p class="text-xs text-slate-500">Quantidade de cartões emitidos</p>
                     </div>
                 </div>
                 <div class="relative h-[280px] w-full">
@@ -202,11 +202,11 @@
             <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-5">
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
                     <div>
-                        <h2 class="text-base font-bold text-slate-900">Consulta de Rifas Pendentes (Coluna O em branco)</h2>
+                        <h2 class="text-base font-bold text-slate-900">Consulta de Rifas Pendentes</h2>
                         <p class="text-xs text-slate-500">Selecione uma categoria para listar os nomes, totais acumulados e contato</p>
                     </div>
                     <div class="w-full sm:w-72">
-                        <label for="select-categoria" class="block text-[11px] font-bold uppercase text-slate-400 mb-1">Filtrar por Categoria (Coluna A)</label>
+                        <label for="select-categoria" class="block text-[11px] font-bold uppercase text-slate-400 mb-1">Filtrar por Categoria</label>
                         <select id="select-categoria" onchange="renderRifasFiltradas()" class="w-full px-3 py-2 text-xs font-semibold text-slate-700 bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-petroleo-500 focus:bg-white transition">
                             <option value="">-- Selecione uma Categoria --</option>
                         </select>
@@ -261,15 +261,15 @@
                 <!-- Dados Pessoais & Contato -->
                 <div class="grid grid-cols-2 gap-4 bg-slate-50 p-4 rounded-xl border border-slate-200/80">
                     <div>
-                        <span class="text-[10px] font-bold text-slate-400 uppercase block">Telefone Fixo (Coluna H)</span>
+                        <span class="text-[10px] font-bold text-slate-400 uppercase block">Telefone Fixo</span>
                         <p id="m-fone" class="font-semibold text-slate-800 text-xs mt-0.5">--</p>
                     </div>
                     <div>
-                        <span class="text-[10px] font-bold text-slate-400 uppercase block">Celular (Coluna I)</span>
+                        <span class="text-[10px] font-bold text-slate-400 uppercase block">Celular</span>
                         <p id="m-celular" class="font-semibold text-slate-800 text-xs mt-0.5">--</p>
                     </div>
                     <div class="col-span-2 pt-2 border-t border-slate-200/60">
-                        <span class="text-[10px] font-bold text-slate-400 uppercase block">Quem Indicou (Coluna C)</span>
+                        <span class="text-[10px] font-bold text-slate-400 uppercase block">Quem Indicou</span>
                         <p id="m-indicacao" class="font-semibold text-slate-800 text-xs mt-0.5">--</p>
                     </div>
                 </div>
@@ -280,7 +280,7 @@
                         <i class="fa-solid fa-location-dot text-petroleo-600"></i> Endereço
                     </h4>
                     <div class="space-y-1 text-slate-600">
-                        <p><strong class="text-slate-800">Logradouro:</strong> <span id="m-endereco">--</span></p>
+                        <p><strong class="text-slate-800">Endereço:</strong> <span id="m-endereco">--</span></p>
                         <p><strong class="text-slate-800">Bairro:</strong> <span id="m-bairro">--</span></p>
                         <p><strong class="text-slate-800">Cidade:</strong> <span id="m-cidade">--</span></p>
                     </div>
@@ -312,7 +312,7 @@
 
     <!-- Footer -->
     <footer class="bg-white border-t border-slate-200 py-4 text-center text-xs text-slate-400 mt-auto">
-        Festa dos Motoristas 2026 • Painel Simplificado
+        58ª Festa dos Motoristas • 2026
     </footer>
 
     <!-- Script Principal da Aplicação -->
