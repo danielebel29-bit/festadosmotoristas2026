@@ -6,6 +6,29 @@
     <title>Dashboard - Caixa Semana das Missas 2026</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        petroleo: {
+                            50: '#f2f7f9',
+                            100: '#e1edf1',
+                            200: '#c5dce3',
+                            300: '#9bc2d0',
+                            400: '#6aa1b6',
+                            500: '#46839b',
+                            600: '#34697f',
+                            700: '#2c5567',
+                            800: '#274756',
+                            900: '#15333e', // Cor principal extraída da imagem
+                            950: '#0d2028',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- FontAwesome -->
@@ -19,15 +42,15 @@
 <body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
 
     <!-- Top Header -->
-    <header class="bg-indigo-900 text-white shadow-md border-b border-indigo-800">
+    <header class="bg-petroleo-900 text-white shadow-md border-b border-petroleo-800">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div class="flex items-center space-x-3">
-                <div class="p-2.5 bg-indigo-700/60 rounded-xl border border-indigo-500/30">
+                <div class="p-2.5 bg-petroleo-800 rounded-xl border border-petroleo-700/60">
                     <i class="fa-solid fa-chart-line text-xl text-amber-400"></i>
                 </div>
                 <div>
                     <h1 class="text-xl font-bold tracking-tight">Festa dos Motoristas 2026</h1>
-                    <p class="text-indigo-200 text-xs font-medium">Vendas 25 à 30/07</p>
+                    <p class="text-petroleo-200 text-xs font-medium">Caixa Semana das Missas (Colunas B, D-H, M)</p>
                 </div>
             </div>
             <div class="flex items-center gap-3">
@@ -35,7 +58,7 @@
                     <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
                     Carregando...
                 </span>
-                <button onclick="fetchSheetData()" class="bg-indigo-700 hover:bg-indigo-600 text-white px-3 py-1.5 rounded-lg font-medium text-xs transition border border-indigo-500/40 flex items-center gap-1.5">
+                <button onclick="fetchSheetData()" class="bg-petroleo-800 hover:bg-petroleo-700 text-white px-3 py-1.5 rounded-lg font-medium text-xs transition border border-petroleo-600/50 flex items-center gap-1.5">
                     <i class="fa-solid fa-rotate-right text-xs"></i>
                     Atualizar
                 </button>
@@ -52,7 +75,7 @@
                 <div>
                     <p class="text-xs font-bold uppercase tracking-wider text-slate-400">Produto Mais Vendido</p>
                     <h3 id="kpi-top-product" class="text-2xl font-black text-slate-900 mt-1 truncate max-w-[280px]">--</h3>
-                    <p id="kpi-top-product-qty" class="text-xs font-medium text-indigo-600 mt-1">-- unidades vendidas (Coluna M)</p>
+                    <p id="kpi-top-product-qty" class="text-xs font-medium text-petroleo-600 mt-1">-- unidades vendidas (Coluna M)</p>
                 </div>
                 <div class="w-12 h-12 bg-amber-50 text-amber-500 rounded-xl flex items-center justify-center text-xl shrink-0">
                     <i class="fa-solid fa-trophy"></i>
@@ -80,7 +103,7 @@
                 </div>
                 <div class="relative">
                     <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
-                    <input type="text" id="table-search" placeholder="Filtrar produto..." onkeyup="filterTable()" class="pl-8 pr-3 py-1.5 text-xs border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 w-full sm:w-48 bg-white">
+                    <input type="text" id="table-search" placeholder="Filtrar produto..." onkeyup="filterTable()" class="pl-8 pr-3 py-1.5 text-xs border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-petroleo-500 w-full sm:w-48 bg-white">
                 </div>
             </div>
 
@@ -95,7 +118,7 @@
                         <!-- Rows generated via JS -->
                     </tbody>
                     <tfoot>
-                        <tr id="table-footer" class="bg-indigo-50/60 font-bold text-indigo-950 border-t-2 border-indigo-200">
+                        <tr id="table-footer" class="bg-petroleo-50/80 font-bold text-petroleo-950 border-t-2 border-petroleo-200">
                             <!-- Totals generated via JS -->
                         </tr>
                     </tfoot>
@@ -181,7 +204,7 @@
             // Render Table Header
             const headerEl = document.getElementById('table-header');
             headerEl.innerHTML = headers.map((h, idx) => `
-                <th class="px-4 py-3 ${idx === 0 ? 'text-left' : 'text-center'} ${idx === headers.length - 1 ? 'bg-indigo-100/70 text-indigo-900 font-extrabold' : ''}">
+                <th class="px-4 py-3 ${idx === 0 ? 'text-left' : 'text-center'} ${idx === headers.length - 1 ? 'bg-petroleo-100 text-petroleo-950 font-extrabold' : ''}">
                     ${h || ''}
                 </th>
             `).join('');
@@ -207,10 +230,10 @@
                 const bgRowClass = rowIdx % 2 === 0 ? 'bg-white' : 'bg-slate-50/50';
 
                 return `
-                    <tr class="${bgRowClass} hover:bg-indigo-50/30 transition">
+                    <tr class="${bgRowClass} hover:bg-petroleo-50/40 transition">
                         <td class="px-4 py-2.5 font-medium text-slate-800">${productName}</td>
                         ${row.slice(1, -1).map(val => `<td class="px-4 py-2.5 text-center font-normal text-slate-600">${val || 0}</td>`).join('')}
-                        <td class="px-4 py-2.5 text-center font-bold text-indigo-700 bg-indigo-50/30">${totalQty}</td>
+                        <td class="px-4 py-2.5 text-center font-bold text-petroleo-800 bg-petroleo-50/30">${totalQty}</td>
                     </tr>
                 `;
             }).join('');
@@ -220,7 +243,7 @@
             footerEl.innerHTML = `
                 <td class="px-4 py-3 font-bold text-slate-900">TOTAL</td>
                 ${dailyTotals.slice(0, -1).map(val => `<td class="px-4 py-3 text-center font-bold">${val}</td>`).join('')}
-                <td class="px-4 py-3 text-center font-black text-indigo-900 text-sm bg-indigo-100">${dailyTotals[dailyTotals.length - 1]}</td>
+                <td class="px-4 py-3 text-center font-black text-petroleo-950 text-sm bg-petroleo-200/80">${dailyTotals[dailyTotals.length - 1]}</td>
             `;
 
             // Update KPI Cards
@@ -253,13 +276,13 @@
                     datasets: [{
                         label: 'Itens Vendidos',
                         data: daySums,
-                        borderColor: '#4f46e5',
-                        backgroundColor: 'rgba(79, 70, 229, 0.08)',
+                        borderColor: '#15333e',
+                        backgroundColor: 'rgba(21, 51, 62, 0.12)',
                         fill: true,
                         tension: 0.25,
                         pointRadius: 6,
                         pointHoverRadius: 8,
-                        pointBackgroundColor: '#4f46e5'
+                        pointBackgroundColor: '#15333e'
                     }]
                 },
                 options: {
