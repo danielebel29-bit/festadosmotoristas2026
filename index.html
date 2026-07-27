@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vendas da Semana - Festa dos Motoristas 2026</title>
+    <title>Dashboard - Festa dos Motoristas 2026</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -21,7 +21,7 @@
                             600: '#34697f',
                             700: '#2c5567',
                             800: '#274756',
-                            900: '#15333e', // Cor principal extraída da imagem
+                            900: '#15333e',
                             950: '#0d2028',
                         }
                     }
@@ -34,12 +34,12 @@
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col relative">
 
     <!-- Top Header -->
     <header class="bg-petroleo-900 text-white shadow-md border-b border-petroleo-800">
@@ -50,7 +50,7 @@
                 </div>
                 <div>
                     <h1 class="text-xl font-bold tracking-tight">Festa dos Motoristas 2026</h1>
-                    <p class="text-petroleo-200 text-xs font-medium">Vendas de 25 à 30/07</p>
+                    <p class="text-petroleo-200 text-xs font-medium">Painel de Gestão e Acompanhamento</p>
                 </div>
             </div>
             <div class="flex items-center gap-3">
@@ -64,94 +64,285 @@
                 </button>
             </div>
         </div>
+
+        <!-- Menu Superior de Navegação -->
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-2">
+            <nav class="flex space-x-2 border-b border-petroleo-800/80">
+                <button id="nav-vendas" onclick="switchTab('vendas')" class="px-4 py-2.5 font-medium text-xs border-b-2 border-amber-400 text-amber-400 flex items-center gap-2 transition-colors">
+                    <i class="fa-solid fa-cart-shopping"></i> Vendas
+                </button>
+                <button id="nav-rifas" onclick="switchTab('rifas')" class="px-4 py-2.5 font-medium text-xs border-b-2 border-transparent text-petroleo-300 hover:text-white flex items-center gap-2 transition-colors">
+                    <i class="fa-solid fa-ticket"></i> Rifas
+                </button>
+            </nav>
+        </div>
     </header>
 
     <!-- Main Content Container -->
     <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow w-full space-y-6">
 
-        <!-- Focus KPI Cards Summary -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-            <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex items-center justify-between">
-                <div>
-                    <p class="text-xs font-bold uppercase tracking-wider text-slate-400">Produto Mais Vendido</p>
-                    <h3 id="kpi-top-product" class="text-2xl font-black text-slate-900 mt-1 truncate max-w-[280px]">--</h3>
-                    <p id="kpi-top-product-qty" class="text-xs font-medium text-petroleo-600 mt-1">-- unidades vendidas (Coluna M)</p>
+        <!-- ABA 1: VENDAS -->
+        <div id="tab-vendas" class="space-y-6">
+            <!-- Focus KPI Cards Summary -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex items-center justify-between">
+                    <div>
+                        <p class="text-xs font-bold uppercase tracking-wider text-slate-400">Produto Mais Vendido</p>
+                        <h3 id="kpi-top-product" class="text-2xl font-black text-slate-900 mt-1 truncate max-w-[280px]">--</h3>
+                        <p id="kpi-top-product-qty" class="text-xs font-medium text-petroleo-600 mt-1">-- unidades vendidas (Coluna M)</p>
+                    </div>
+                    <div class="w-12 h-12 bg-amber-50 text-amber-500 rounded-xl flex items-center justify-center text-xl shrink-0">
+                        <i class="fa-solid fa-trophy"></i>
+                    </div>
                 </div>
-                <div class="w-12 h-12 bg-amber-50 text-amber-500 rounded-xl flex items-center justify-center text-xl shrink-0">
-                    <i class="fa-solid fa-trophy"></i>
+
+                <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex items-center justify-between">
+                    <div>
+                        <p class="text-xs font-bold uppercase tracking-wider text-slate-400">Dia de Maior Movimento</p>
+                        <h3 id="kpi-peak-day" class="text-2xl font-black text-slate-900 mt-1">--</h3>
+                        <p id="kpi-peak-day-qty" class="text-xs font-medium text-emerald-600 mt-1">-- itens comercializados (Colunas D a H)</p>
+                    </div>
+                    <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center text-xl shrink-0">
+                        <i class="fa-solid fa-calendar-day"></i>
+                    </div>
                 </div>
             </div>
 
-            <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex items-center justify-between">
-                <div>
-                    <p class="text-xs font-bold uppercase tracking-wider text-slate-400">Dia de Maior Movimento</p>
-                    <h3 id="kpi-peak-day" class="text-2xl font-black text-slate-900 mt-1">--</h3>
-                    <p id="kpi-peak-day-qty" class="text-xs font-medium text-emerald-600 mt-1">-- itens comercializados</p>
+            <!-- Tabela de Vendas -->
+            <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+                <div class="p-5 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-slate-50/50">
+                    <div>
+                        <h2 class="text-base font-bold text-slate-900">Detalhamento Diário de Vendas</h2>
+                        <p class="text-xs text-slate-500">Exibindo apenas produtos com quantidade vendida maior que zero (ordem alfabética)</p>
+                    </div>
+                    <div class="relative">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                        <input type="text" id="table-search" placeholder="Filtrar produto..." onkeyup="filterTable()" class="pl-8 pr-3 py-1.5 text-xs border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-petroleo-500 w-full sm:w-48 bg-white">
+                    </div>
                 </div>
-                <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center text-xl shrink-0">
-                    <i class="fa-solid fa-calendar-day"></i>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs">
+                        <thead>
+                            <tr id="table-header" class="bg-slate-100 text-slate-600 font-bold uppercase tracking-wider border-b border-slate-200">
+                                <!-- Cabeçalhos gerados via JS -->
+                            </tr>
+                        </thead>
+                        <tbody id="table-body" class="divide-y divide-slate-100 text-slate-700">
+                            <!-- Linhas geradas via JS -->
+                        </tbody>
+                        <tfoot>
+                            <tr id="table-footer" class="bg-petroleo-50/80 font-bold text-petroleo-950 border-t-2 border-petroleo-200">
+                                <!-- Totais gerados via JS -->
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Gráfico de Evolução Diária -->
+            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                <div class="flex items-center justify-between mb-4">
+                    <div>
+                        <h2 class="text-base font-bold text-slate-900">Evolução de Vendas por Dia</h2>
+                        <p class="text-xs text-slate-500">Volume diário acumulado considerando as colunas D a H</p>
+                    </div>
+                </div>
+                <div class="relative h-[280px] w-full">
+                    <canvas id="chart-daily-sales"></canvas>
                 </div>
             </div>
         </div>
 
-        <!-- Clean Table Section -->
-        <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
-            <div class="p-5 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-slate-50/50">
-                <div>
-                    <h2 class="text-base font-bold text-slate-900">Detalhamento Diário de Vendas</h2>
-                    <p class="text-xs text-slate-500"></p>
+        <!-- ABA 2: RIFAS -->
+        <div id="tab-rifas" class="hidden space-y-6">
+            <!-- 3 Cards Resumo -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between">
+                    <div class="flex items-center justify-between">
+                        <p id="rifas-label-17" class="text-xs font-bold uppercase tracking-wider text-slate-400">Rifas Impressas</p>
+                        <div class="w-10 h-10 bg-sky-50 text-sky-600 rounded-lg flex items-center justify-center text-lg shrink-0">
+                            <i class="fa-solid fa-print"></i>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <h3 id="rifas-val-17" class="text-3xl font-black text-slate-900">--</h3>
+                        <p class="text-xs font-medium text-slate-400 mt-1">Total impresso</p>
+                    </div>
                 </div>
-                <div class="relative">
-                    <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
-                    <input type="text" id="table-search" placeholder="Filtrar produto..." onkeyup="filterTable()" class="pl-8 pr-3 py-1.5 text-xs border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-petroleo-500 w-full sm:w-48 bg-white">
+
+                <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between">
+                    <div class="flex items-center justify-between">
+                        <p id="rifas-label-18" class="text-xs font-bold uppercase tracking-wider text-slate-400">Rifas Enviadas</p>
+                        <div class="w-10 h-10 bg-indigo-50 text-indigo-600 rounded-lg flex items-center justify-center text-lg shrink-0">
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <h3 id="rifas-val-18" class="text-3xl font-black text-slate-900">--</h3>
+                        <p id="rifas-pct-18" class="text-xs font-semibold text-indigo-600 mt-1">-- % em relação às impressas</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between">
+                    <div class="flex items-center justify-between">
+                        <p id="rifas-label-19" class="text-xs font-bold uppercase tracking-wider text-slate-400">Rifas Devolvidas</p>
+                        <div class="w-10 h-10 bg-amber-50 text-amber-600 rounded-lg flex items-center justify-center text-lg shrink-0">
+                            <i class="fa-solid fa-rotate-left"></i>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <h3 id="rifas-val-19" class="text-3xl font-black text-slate-900">--</h3>
+                        <p id="rifas-pct-19" class="text-xs font-semibold text-amber-600 mt-1">-- % em relação às enviadas</p>
+                    </div>
                 </div>
             </div>
 
-            <div class="overflow-x-auto">
-                <table class="w-full text-left text-xs">
-                    <thead>
-                        <tr id="table-header" class="bg-slate-100 text-slate-600 font-bold uppercase tracking-wider border-b border-slate-200">
-                            <!-- Headers generated via JS -->
-                        </tr>
-                    </thead>
-                    <tbody id="table-body" class="divide-y divide-slate-100 text-slate-700">
-                        <!-- Rows generated via JS -->
-                    </tbody>
-                    <tfoot>
-                        <tr id="table-footer" class="bg-petroleo-50/80 font-bold text-petroleo-950 border-t-2 border-petroleo-200">
-                            <!-- Totals generated via JS -->
-                        </tr>
-                    </tfoot>
-                </table>
-            </div>
-        </div>
-
-        <!-- Daily Chart Section -->
-        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-            <div class="flex items-center justify-between mb-4">
-                <div>
-                    <h2 class="text-base font-bold text-slate-900">Evolução de Vendas por Dia</h2>
-                    <p class="text-xs text-slate-500">Volume diário de cartões emitidos</p>
+            <!-- Filtro e Lista por Categoria (Aba RIFAS - Categoria na Coluna A) -->
+            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-5">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+                    <div>
+                        <h2 class="text-base font-bold text-slate-900">Consulta de Rifas Pendentes (Coluna O em branco)</h2>
+                        <p class="text-xs text-slate-500">Selecione uma categoria para listar os nomes, totais acumulados e contato</p>
+                    </div>
+                    <div class="w-full sm:w-72">
+                        <label for="select-categoria" class="block text-[11px] font-bold uppercase text-slate-400 mb-1">Filtrar por Categoria (Coluna A)</label>
+                        <select id="select-categoria" onchange="renderRifasFiltradas()" class="w-full px-3 py-2 text-xs font-semibold text-slate-700 bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-petroleo-500 focus:bg-white transition">
+                            <option value="">-- Selecione uma Categoria --</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
-            <div class="relative h-[280px] w-full">
-                <canvas id="chart-daily-sales"></canvas>
+
+                <!-- Resumo do Filtro -->
+                <div id="rifas-filter-summary" class="hidden items-center justify-between bg-petroleo-50/60 border border-petroleo-200/80 p-3.5 rounded-lg text-xs">
+                    <span class="text-petroleo-900 font-semibold flex items-center gap-2">
+                        <i class="fa-solid fa-filter text-amber-500"></i>
+                        Pessoas encontradas: <strong id="rifas-count-people" class="text-petroleo-950 font-black">0</strong>
+                    </span>
+                    <span class="text-petroleo-900 font-semibold">
+                        Soma da Quantidade (Coluna N): <strong id="rifas-sum-qty" class="text-petroleo-950 font-black text-sm">0</strong>
+                    </span>
+                </div>
+
+                <!-- Lista Visual de Cards -->
+                <div id="rifas-cards-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="col-span-full py-12 text-center text-slate-400 text-xs">
+                        <i class="fa-solid fa-hand-pointer text-2xl text-slate-300 mb-2 block"></i>
+                        Selecione uma categoria acima para visualizar os dados.
+                    </div>
+                </div>
             </div>
         </div>
 
     </main>
+
+    <!-- Modal / Ficha Completa da Pessoa -->
+    <div id="modal-pessoa" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-2xl w-full max-w-lg overflow-hidden flex flex-col max-h-[90vh] animate-in fade-in zoom-in duration-200">
+            <!-- Modal Header -->
+            <div class="bg-petroleo-900 text-white p-5 flex items-center justify-between border-b border-petroleo-800">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-petroleo-800 rounded-full flex items-center justify-center text-amber-400 text-base border border-petroleo-700">
+                        <i class="fa-solid fa-user-gear"></i>
+                    </div>
+                    <div>
+                        <h3 id="m-nome" class="text-base font-bold leading-tight">--</h3>
+                        <p class="text-petroleo-200 text-xs">Ficha Detalhada do Responsável</p>
+                    </div>
+                </div>
+                <button onclick="closeModal()" class="text-petroleo-300 hover:text-white transition w-8 h-8 flex items-center justify-center rounded-lg hover:bg-petroleo-800">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Modal Content -->
+            <div class="p-6 overflow-y-auto space-y-5 text-xs">
+                
+                <!-- Dados Pessoais & Contato -->
+                <div class="grid grid-cols-2 gap-4 bg-slate-50 p-4 rounded-xl border border-slate-200/80">
+                    <div>
+                        <span class="text-[10px] font-bold text-slate-400 uppercase block">Telefone Fixo (Coluna H)</span>
+                        <p id="m-fone" class="font-semibold text-slate-800 text-xs mt-0.5">--</p>
+                    </div>
+                    <div>
+                        <span class="text-[10px] font-bold text-slate-400 uppercase block">Celular (Coluna I)</span>
+                        <p id="m-celular" class="font-semibold text-slate-800 text-xs mt-0.5">--</p>
+                    </div>
+                    <div class="col-span-2 pt-2 border-t border-slate-200/60">
+                        <span class="text-[10px] font-bold text-slate-400 uppercase block">Quem Indicou (Coluna C)</span>
+                        <p id="m-indicacao" class="font-semibold text-slate-800 text-xs mt-0.5">--</p>
+                    </div>
+                </div>
+
+                <!-- Endereço Completo -->
+                <div class="space-y-2 border-l-2 border-petroleo-500 pl-3">
+                    <h4 class="font-bold text-slate-900 uppercase tracking-wider text-[11px] flex items-center gap-1.5">
+                        <i class="fa-solid fa-location-dot text-petroleo-600"></i> Endereço
+                    </h4>
+                    <div class="space-y-1 text-slate-600">
+                        <p><strong class="text-slate-800">Logradouro:</strong> <span id="m-endereco">--</span></p>
+                        <p><strong class="text-slate-800">Bairro:</strong> <span id="m-bairro">--</span></p>
+                        <p><strong class="text-slate-800">Cidade:</strong> <span id="m-cidade">--</span></p>
+                    </div>
+                </div>
+
+                <!-- Sequências de Blocos / Rifas -->
+                <div class="space-y-2">
+                    <h4 class="font-bold text-slate-900 uppercase tracking-wider text-[11px] flex items-center gap-1.5">
+                        <i class="fa-solid fa-ticket text-amber-500"></i> Sequências de Blocos
+                    </h4>
+                    <div id="m-blocos-container" class="bg-amber-50/60 border border-amber-200/80 rounded-xl p-3.5 space-y-1.5 text-amber-950 font-medium">
+                        <!-- Blocos injetados via JS -->
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="p-4 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
+                <div id="m-whatsapp-btn">
+                    <!-- Botão WhatsApp dinâmico -->
+                </div>
+                <button onclick="closeModal()" class="px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold text-xs rounded-xl transition">
+                    Fechar
+                </button>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="bg-white border-t border-slate-200 py-4 text-center text-xs text-slate-400 mt-auto">
         Festa dos Motoristas 2026 • Painel Simplificado
     </footer>
 
-    <!-- Application Script -->
+    <!-- Script Principal da Aplicação -->
     <script>
-        // LINK DO WEB APP DO APPS SCRIPT CONFIGURADO:
         const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyuvA9V-65xnb7pth7-YcHolv9RTHmFSEu_JPzHASgzqWN1mM_oKzyV-jmuRSvShjLVwQ/exec'.trim();
 
         let dailyChart = null;
+        let globalRifasLista = [];
+        let groupedPeopleData = {};
+
+        function switchTab(tab) {
+            const btnVendas = document.getElementById('nav-vendas');
+            const btnRifas = document.getElementById('nav-rifas');
+            const contentVendas = document.getElementById('tab-vendas');
+            const contentRifas = document.getElementById('tab-rifas');
+
+            if (tab === 'vendas') {
+                contentVendas.classList.remove('hidden');
+                contentRifas.classList.add('hidden');
+                
+                btnVendas.className = "px-4 py-2.5 font-medium text-xs border-b-2 border-amber-400 text-amber-400 flex items-center gap-2 transition-colors";
+                btnRifas.className = "px-4 py-2.5 font-medium text-xs border-b-2 border-transparent text-petroleo-300 hover:text-white flex items-center gap-2 transition-colors";
+            } else if (tab === 'rifas') {
+                contentVendas.classList.add('hidden');
+                contentRifas.classList.remove('hidden');
+
+                btnRifas.className = "px-4 py-2.5 font-medium text-xs border-b-2 border-amber-400 text-amber-400 flex items-center gap-2 transition-colors";
+                btnVendas.className = "px-4 py-2.5 font-medium text-xs border-b-2 border-transparent text-petroleo-300 hover:text-white flex items-center gap-2 transition-colors";
+            }
+        }
 
         function fetchSheetData() {
             const statusEl = document.getElementById('sync-status');
@@ -171,7 +362,21 @@
                     return response.json();
                 })
                 .then(data => {
-                    initDashboard(data);
+                    if (data.vendas) {
+                        initDashboardVendas(data.vendas);
+                    } else if (Array.isArray(data)) {
+                        initDashboardVendas(data);
+                    }
+
+                    if (data.rifas) {
+                        initDashboardRifas(data.rifas);
+                    }
+
+                    if (data.rifasLista) {
+                        globalRifasLista = data.rifasLista;
+                        populateCategoriasDropdown(data.rifasLista);
+                    }
+
                     statusEl.className = "inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30";
                     statusEl.innerHTML = '<span class="w-2 h-2 rounded-full bg-emerald-400"></span> Sincronizado';
                 })
@@ -182,26 +387,21 @@
                 });
         }
 
-        function initDashboard(data) {
+        // Lógica da Aba Vendas
+        function initDashboardVendas(data) {
             if (!data || data.length === 0) return;
 
-            const headers = data[0]; // [Produto, ColD, ColE, ColF, ColG, ColH, TotalM]
+            const headers = data[0];
             const rawRows = data.slice(1);
 
-            // 1. Filtra apenas produtos com Quantidade Total (Coluna M / index 6) maior que 0
-            const activeRows = rawRows.filter(row => {
-                const totalQty = Number(row[6]) || 0;
-                return totalQty > 0;
-            });
+            const activeRows = rawRows.filter(row => (Number(row[6]) || 0) > 0);
 
-            // 2. Classifica em ordem alfabética (A-Z) pelo nome do produto (index 0)
             activeRows.sort((a, b) => {
                 const nameA = (a[0] || '').toString().toLowerCase();
                 const nameB = (b[0] || '').toString().toLowerCase();
                 return nameA.localeCompare(nameB, 'pt-BR');
             });
 
-            // Render Table Header
             const headerEl = document.getElementById('table-header');
             headerEl.innerHTML = headers.map((h, idx) => `
                 <th class="px-4 py-3 ${idx === 0 ? 'text-left' : 'text-center'} ${idx === headers.length - 1 ? 'bg-petroleo-100 text-petroleo-950 font-extrabold' : ''}">
@@ -209,9 +409,8 @@
                 </th>
             `).join('');
 
-            // Render Table Body & Calculate Metrics
             const bodyEl = document.getElementById('table-body');
-            const dailyTotals = new Array(headers.length - 1).fill(0); // Para colunas D..H e Total M
+            const dailyTotals = new Array(headers.length - 1).fill(0);
             let topProduct = { name: '', qty: 0 };
 
             bodyEl.innerHTML = activeRows.map((row, rowIdx) => {
@@ -222,7 +421,6 @@
                     topProduct = { name: productName, qty: totalQty };
                 }
 
-                // Soma os totais para o footer (D a H e Total M)
                 for (let i = 1; i < row.length; i++) {
                     dailyTotals[i - 1] += Number(row[i]) || 0;
                 }
@@ -238,7 +436,6 @@
                 `;
             }).join('');
 
-            // Render Table Footer
             const footerEl = document.getElementById('table-footer');
             footerEl.innerHTML = `
                 <td class="px-4 py-3 font-bold text-slate-900">TOTAL</td>
@@ -246,11 +443,9 @@
                 <td class="px-4 py-3 text-center font-black text-petroleo-950 text-sm bg-petroleo-200/80">${dailyTotals[dailyTotals.length - 1]}</td>
             `;
 
-            // Update KPI Cards
             document.getElementById('kpi-top-product').innerText = topProduct.name || 'Nenhum';
             document.getElementById('kpi-top-product-qty').innerText = `${topProduct.qty.toLocaleString('pt-BR')} unidades vendidas`;
 
-            // Find Peak Day from Columns D to H
             const dayNames = headers.slice(1, -1);
             const daySums = dailyTotals.slice(0, -1);
             let peakDayIdx = 0;
@@ -266,7 +461,6 @@
             document.getElementById('kpi-peak-day').innerText = dayNames[peakDayIdx] || '--';
             document.getElementById('kpi-peak-day-qty').innerText = `${peakDayQty.toLocaleString('pt-BR')} itens comercializados`;
 
-            // Build Daily Evolution Line Chart (Columns D to H)
             if (dailyChart) dailyChart.destroy();
             const ctxDaily = document.getElementById('chart-daily-sales').getContext('2d');
             dailyChart = new Chart(ctxDaily, {
@@ -300,7 +494,234 @@
             });
         }
 
-        // Search Filter for Table
+        // Cards de Rifas (B17:C19)
+        function initDashboardRifas(rifasData) {
+            if (!rifasData || rifasData.length < 3) return;
+
+            const label17 = rifasData[0][0] || 'Rifas Impressas';
+            const val17 = Number(rifasData[0][1]) || 0;
+
+            const label18 = rifasData[1][0] || 'Rifas Enviadas';
+            const val18 = Number(rifasData[1][1]) || 0;
+
+            const label19 = rifasData[2][0] || 'Rifas Devolvidas';
+            const val19 = Number(rifasData[2][1]) || 0;
+
+            const pctEnviadas = val17 > 0 ? ((val18 / val17) * 100).toFixed(1) : 0;
+            const pctDevolvidas = val18 > 0 ? ((val19 / val18) * 100).toFixed(1) : 0;
+
+            document.getElementById('rifas-label-17').innerText = label17;
+            document.getElementById('rifas-val-17').innerText = val17.toLocaleString('pt-BR');
+
+            document.getElementById('rifas-label-18').innerText = label18;
+            document.getElementById('rifas-val-18').innerText = val18.toLocaleString('pt-BR');
+            document.getElementById('rifas-pct-18').innerText = `${pctEnviadas}% em relação às impressas`;
+
+            document.getElementById('rifas-label-19').innerText = label19;
+            document.getElementById('rifas-val-19').innerText = val19.toLocaleString('pt-BR');
+            document.getElementById('rifas-pct-19').innerText = `${pctDevolvidas}% em relação às enviadas`;
+        }
+
+        // Preenche as Categorias da COLUNA A (índice 0) no Filtro Dropdown
+        function populateCategoriasDropdown(rows) {
+            const selectEl = document.getElementById('select-categoria');
+            if (!rows || rows.length === 0) return;
+
+            const categoriasSet = new Set();
+            rows.forEach((row, idx) => {
+                if (idx === 0) return; // Ignora cabeçalho
+                const cat = (row[0] || '').toString().trim(); // Coluna A
+                if (cat) categoriasSet.add(cat);
+            });
+
+            const categorias = Array.from(categoriasSet).sort((a, b) => a.localeCompare(b, 'pt-BR'));
+
+            selectEl.innerHTML = '<option value="">-- Selecione uma Categoria --</option>' + 
+                categorias.map(c => `<option value="${c}">${c}</option>`).join('');
+        }
+
+        // Renderiza os Cards das Pessoas
+        function renderRifasFiltradas() {
+            const selectedCat = document.getElementById('select-categoria').value;
+            const container = document.getElementById('rifas-cards-container');
+            const summaryBox = document.getElementById('rifas-filter-summary');
+
+            if (!selectedCat) {
+                summaryBox.classList.add('hidden');
+                summaryBox.classList.remove('flex');
+                container.innerHTML = `
+                    <div class="col-span-full py-12 text-center text-slate-400 text-xs">
+                        <i class="fa-solid fa-hand-pointer text-2xl text-slate-300 mb-2 block"></i>
+                        Selecione uma categoria acima para visualizar os dados.
+                    </div>
+                `;
+                return;
+            }
+
+            groupedPeopleData = {};
+            let totalQtySum = 0;
+
+            globalRifasLista.forEach(row => {
+                const cat = (row[0] || '').toString().trim();        // Coluna A (Categoria)
+                const indicacao = (row[2] || '').toString().trim();  // Coluna C (Indicou)
+                const nome = (row[3] || '').toString().trim();       // Coluna D (Nome)
+                const endereco = (row[4] || '').toString().trim();   // Coluna E (Endereço)
+                const bairro = (row[5] || '').toString().trim();     // Coluna F (Bairro)
+                const cidade = (row[6] || '').toString().trim();     // Coluna G (Cidade)
+                const fone = (row[7] || '').toString().trim();       // Coluna H (Telefone Fixo)
+                const celular = (row[8] || '').toString().trim();    // Coluna I (Celular)
+                
+                const blocoInicio = (row[10] || '').toString().trim(); // Coluna K (Primeiro bloco)
+                const blocoFim = (row[11] || '').toString().trim();    // Coluna L (Último bloco)
+                const qtd = Number(row[12]) || 0;                     // Coluna M (Quantidade)
+                
+                const valO = (row[13] !== undefined && row[13] !== null) ? row[13].toString().trim() : ''; // Coluna N
+
+                // REGRA: Categoria (Col A) == selecionada, Coluna N/O em branco ("") e Nome existe
+                if (cat === selectedCat && valO === "" && nome !== "") {
+                    if (!groupedPeopleData[nome]) {
+                        groupedPeopleData[nome] = {
+                            nome: nome,
+                            indicacao: indicacao,
+                            endereco: endereco,
+                            bairro: bairro,
+                            cidade: cidade,
+                            fone: fone,
+                            celular: celular,
+                            qtdTotal: 0,
+                            sequenciasBlocos: []
+                        };
+                    }
+
+                    // Atualiza campos caso estejam preenchidos em outra linha
+                    if (!groupedPeopleData[nome].fone && fone) groupedPeopleData[nome].fone = fone;
+                    if (!groupedPeopleData[nome].celular && celular) groupedPeopleData[nome].celular = celular;
+                    if (!groupedPeopleData[nome].endereco && endereco) groupedPeopleData[nome].endereco = endereco;
+                    if (!groupedPeopleData[nome].bairro && bairro) groupedPeopleData[nome].bairro = bairro;
+                    if (!groupedPeopleData[nome].cidade && cidade) groupedPeopleData[nome].cidade = cidade;
+                    if (!groupedPeopleData[nome].indicacao && indicacao) groupedPeopleData[nome].indicacao = indicacao;
+
+                    groupedPeopleData[nome].qtdTotal += qtd;
+                    totalQtySum += qtd;
+
+                    // Adiciona o intervalo concatenado
+                    if (blocoInicio || blocoFim) {
+                        const strBloco = (blocoInicio && blocoFim) ? `${blocoInicio} à ${blocoFim}` : (blocoInicio || blocoFim);
+                        groupedPeopleData[nome].sequenciasBlocos.push(strBloco);
+                    }
+                }
+            });
+
+            const peopleList = Object.values(groupedPeopleData).sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR'));
+
+            summaryBox.classList.remove('hidden');
+            summaryBox.classList.add('flex');
+            document.getElementById('rifas-count-people').innerText = peopleList.length;
+            document.getElementById('rifas-sum-qty').innerText = totalQtySum.toLocaleString('pt-BR');
+
+            if (peopleList.length === 0) {
+                container.innerHTML = `
+                    <div class="col-span-full py-10 text-center text-amber-600/80 bg-amber-50/50 rounded-xl border border-amber-200/60 text-xs">
+                        <i class="fa-solid fa-circle-info text-xl mb-1 block text-amber-500"></i>
+                        Nenhum registro pendente encontrado para esta categoria.
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = peopleList.map(person => {
+                const phoneClean = person.celular.replace(/\D/g, '');
+                const hasCelular = phoneClean.length >= 8;
+                const whatsappUrl = hasCelular ? `https://wa.me/55${phoneClean}` : '#';
+
+                return `
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:border-petroleo-300 transition flex flex-col justify-between space-y-3">
+                        <div>
+                            <div class="flex items-start justify-between gap-2 mb-2">
+                                <button onclick="openModal('${person.nome.replace(/'/g, "\\'")}')" class="text-left min-w-0 group">
+                                    <h4 class="text-sm font-bold text-slate-900 group-hover:text-petroleo-600 transition truncate">${person.nome}</h4>
+                                    <span class="text-[10px] text-petroleo-500 font-semibold group-hover:underline flex items-center gap-1">
+                                        <i class="fa-solid fa-address-card"></i> Ver ficha completa
+                                    </span>
+                                </button>
+                                <span class="px-2.5 py-1 bg-petroleo-50 text-petroleo-900 rounded-lg text-xs font-extrabold border border-petroleo-200 shrink-0">
+                                    ${person.qtdTotal} un
+                                </span>
+                            </div>
+
+                            <div class="space-y-1 mt-3 text-[11px] text-slate-500 border-t border-slate-100 pt-2.5">
+                                <p class="flex items-center gap-1.5">
+                                    <i class="fa-solid fa-phone text-slate-400 w-3"></i>
+                                    <strong>Fixo:</strong> ${person.fone || 'Não informado'}
+                                </p>
+                                <p class="flex items-center gap-1.5">
+                                    <i class="fa-solid fa-mobile-screen text-slate-400 w-3"></i>
+                                    <strong>Celular:</strong> ${person.celular || 'Não informado'}
+                                </p>
+                            </div>
+                        </div>
+
+                        ${hasCelular ? `
+                            <div class="pt-2 border-t border-slate-100 flex justify-end">
+                                <a href="${whatsappUrl}" target="_blank" class="inline-flex items-center gap-1.5 text-[11px] font-bold text-emerald-600 hover:text-emerald-700 bg-emerald-50 hover:bg-emerald-100/80 px-2.5 py-1 rounded-md transition">
+                                    <i class="fa-brands fa-whatsapp text-xs"></i>
+                                    Enviar Mensagem
+                                </a>
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Abre a Ficha Completa
+        function openModal(nomePessoa) {
+            const person = groupedPeopleData[nomePessoa];
+            if (!person) return;
+
+            document.getElementById('m-nome').innerText = person.nome;
+            document.getElementById('m-fone').innerText = person.fone || 'Não informado';
+            document.getElementById('m-celular').innerText = person.celular || 'Não informado';
+            document.getElementById('m-indicacao').innerText = person.indicacao || 'Não informado';
+            document.getElementById('m-endereco').innerText = person.endereco || 'Não informado';
+            document.getElementById('m-bairro').innerText = person.bairro || 'Não informado';
+            document.getElementById('m-cidade').innerText = person.cidade || 'Não informado';
+
+            // Preenche as sequências de blocos
+            const blocosContainer = document.getElementById('m-blocos-container');
+            if (person.sequenciasBlocos.length > 0) {
+                blocosContainer.innerHTML = person.sequenciasBlocos.map(seq => `
+                    <div class="flex items-center gap-2 bg-white/80 px-3 py-1.5 rounded-lg border border-amber-200/60 shadow-2xs">
+                        <i class="fa-solid fa-ticket text-amber-500 text-xs"></i>
+                        <span>Bloco: <strong>${seq}</strong></span>
+                    </div>
+                `).join('');
+            } else {
+                blocosContainer.innerHTML = '<p class="text-slate-400 text-xs italic">Nenhum bloco registrado.</p>';
+            }
+
+            // WhatsApp no footer do modal
+            const phoneClean = person.celular.replace(/\D/g, '');
+            const whatsappContainer = document.getElementById('m-whatsapp-btn');
+            if (phoneClean.length >= 8) {
+                whatsappContainer.innerHTML = `
+                    <a href="https://wa.me/55${phoneClean}" target="_blank" class="inline-flex items-center gap-2 text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 px-4 py-2 rounded-xl transition shadow-xs">
+                        <i class="fa-brands fa-whatsapp text-sm"></i>
+                        WhatsApp
+                    </a>
+                `;
+            } else {
+                whatsappContainer.innerHTML = '';
+            }
+
+            document.getElementById('modal-pessoa').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('modal-pessoa').classList.add('hidden');
+        }
+
+        // Filtro da tabela de Vendas
         function filterTable() {
             const input = document.getElementById('table-search').value.toLowerCase();
             const rows = document.querySelectorAll('#table-body tr');
@@ -310,7 +731,7 @@
             });
         }
 
-        // Initialize on Load
+        // Carrega os dados ao abrir a página
         document.addEventListener('DOMContentLoaded', () => {
             fetchSheetData();
         });
