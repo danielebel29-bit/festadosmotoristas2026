@@ -29,8 +29,6 @@
             }
         }
     </script>
-    <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
@@ -46,11 +44,11 @@
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div class="flex items-center space-x-3">
                 <div class="p-2.5 bg-petroleo-800 rounded-xl border border-petroleo-700/60">
-                    <i class="fa-solid fa-chart-line text-xl text-amber-400"></i>
+                    <i class="fa-solid fa-ticket text-xl text-amber-400"></i>
                 </div>
                 <div>
                     <h1 class="text-xl font-bold tracking-tight">58ª Festa dos Motoristas</h1>
-                    <p class="text-petroleo-200 text-xs font-medium">2026</p>
+                    <p class="text-petroleo-200 text-xs font-medium">Controle de Rifas • 2026</p>
                 </div>
             </div>
             <div class="flex items-center gap-3">
@@ -64,98 +62,13 @@
                 </button>
             </div>
         </div>
-
-        <!-- Menu Superior de Navegação -->
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-2">
-            <nav class="flex space-x-2 border-b border-petroleo-800/80">
-                <button id="nav-vendas" onclick="switchTab('vendas')" class="px-4 py-2.5 font-medium text-xs border-b-2 border-amber-400 text-amber-400 flex items-center gap-2 transition-colors">
-                    <i class="fa-solid fa-cart-shopping"></i> Vendas
-                </button>
-                <button id="nav-rifas" onclick="switchTab('rifas')" class="px-4 py-2.5 font-medium text-xs border-b-2 border-transparent text-petroleo-300 hover:text-white flex items-center gap-2 transition-colors">
-                    <i class="fa-solid fa-ticket"></i> Rifas
-                </button>
-            </nav>
-        </div>
     </header>
 
     <!-- Main Content Container -->
     <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow w-full space-y-6">
 
-        <!-- ABA 1: VENDAS -->
-        <div id="tab-vendas" class="space-y-6">
-            <!-- Focus KPI Cards Summary -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex items-center justify-between">
-                    <div>
-                        <p class="text-xs font-bold uppercase tracking-wider text-slate-400">Produto Mais Vendido</p>
-                        <h3 id="kpi-top-product" class="text-2xl font-black text-slate-900 mt-1 truncate max-w-[280px]">--</h3>
-                        <p id="kpi-top-product-qty" class="text-xs font-medium text-petroleo-600 mt-1">-- unidades vendidas</p>
-                    </div>
-                    <div class="w-12 h-12 bg-amber-50 text-amber-500 rounded-xl flex items-center justify-center text-xl shrink-0">
-                        <i class="fa-solid fa-trophy"></i>
-                    </div>
-                </div>
-
-                <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex items-center justify-between">
-                    <div>
-                        <p class="text-xs font-bold uppercase tracking-wider text-slate-400">Dia de Maior Movimento</p>
-                        <h3 id="kpi-peak-day" class="text-2xl font-black text-slate-900 mt-1">--</h3>
-                        <p id="kpi-peak-day-qty" class="text-xs font-medium text-emerald-600 mt-1">-- itens comercializados</p>
-                    </div>
-                    <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center text-xl shrink-0">
-                        <i class="fa-solid fa-calendar-day"></i>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Tabela de Vendas -->
-            <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
-                <div class="p-5 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-slate-50/50">
-                    <div>
-                        <h2 class="text-base font-bold text-slate-900">Detalhamento Diário de Vendas</h2>
-                        <p class="text-xs text-slate-500">(ordem alfabética)</p>
-                    </div>
-                    <div class="relative">
-                        <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
-                        <input type="text" id="table-search" placeholder="Filtrar produto..." onkeyup="filterTable()" class="pl-8 pr-3 py-1.5 text-xs border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-petroleo-500 w-full sm:w-48 bg-white">
-                    </div>
-                </div>
-
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left text-xs">
-                        <thead>
-                            <tr id="table-header" class="bg-slate-100 text-slate-600 font-bold uppercase tracking-wider border-b border-slate-200">
-                                <!-- Cabeçalhos gerados via JS -->
-                            </tr>
-                        </thead>
-                        <tbody id="table-body" class="divide-y divide-slate-100 text-slate-700">
-                            <!-- Linhas geradas via JS -->
-                        </tbody>
-                        <tfoot>
-                            <tr id="table-footer" class="bg-petroleo-50/80 font-bold text-petroleo-950 border-t-2 border-petroleo-200">
-                                <!-- Totais gerados via JS -->
-                            </tr>
-                        </tfoot>
-                    </table>
-                </div>
-            </div>
-
-            <!-- Gráfico de Evolução Diária -->
-            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-                <div class="flex items-center justify-between mb-4">
-                    <div>
-                        <h2 class="text-base font-bold text-slate-900">Evolução de Vendas por Dia</h2>
-                        <p class="text-xs text-slate-500">Quantidade de cartões emitidos</p>
-                    </div>
-                </div>
-                <div class="relative h-[280px] w-full">
-                    <canvas id="chart-daily-sales"></canvas>
-                </div>
-            </div>
-        </div>
-
-        <!-- ABA 2: RIFAS -->
-        <div id="tab-rifas" class="hidden space-y-6">
+        <!-- ABA: RIFAS -->
+        <div id="tab-rifas" class="space-y-6">
             <!-- 3 Cards Resumo -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
                 <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between">
@@ -198,18 +111,29 @@
                 </div>
             </div>
 
-            <!-- Filtro e Lista por Categoria (Aba RIFAS - Categoria na Coluna A) -->
+            <!-- Filtro e Lista por Categoria / Nome -->
             <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-5">
-                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+                <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b border-slate-100">
                     <div>
                         <h2 class="text-base font-bold text-slate-900">Consulta de Rifas Pendentes</h2>
-                        <p class="text-xs text-slate-500">Selecione uma categoria para listar os nomes, totais acumulados e contato</p>
+                        <p class="text-xs text-slate-500">Filtre por categoria e/ou busque pelo nome para listar as pessoas e pendências</p>
                     </div>
-                    <div class="w-full sm:w-72">
-                        <label for="select-categoria" class="block text-[11px] font-bold uppercase text-slate-400 mb-1">Filtrar por Categoria</label>
-                        <select id="select-categoria" onchange="renderRifasFiltradas()" class="w-full px-3 py-2 text-xs font-semibold text-slate-700 bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-petroleo-500 focus:bg-white transition">
-                            <option value="">-- Selecione uma Categoria --</option>
-                        </select>
+                    <div class="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
+                        <!-- Filtro Categoria -->
+                        <div class="w-full sm:w-60">
+                            <label for="select-categoria" class="block text-[11px] font-bold uppercase text-slate-400 mb-1">Filtrar por Categoria</label>
+                            <select id="select-categoria" onchange="renderRifasFiltradas()" class="w-full px-3 py-2 text-xs font-semibold text-slate-700 bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-petroleo-500 focus:bg-white transition">
+                                <option value="">-- Selecione uma Categoria --</option>
+                            </select>
+                        </div>
+                        <!-- Filtro Nome -->
+                        <div class="w-full sm:w-60">
+                            <label for="search-nome" class="block text-[11px] font-bold uppercase text-slate-400 mb-1">Buscar por Nome</label>
+                            <div class="relative">
+                                <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                                <input type="text" id="search-nome" onkeyup="renderRifasFiltradas()" placeholder="Digite o nome..." class="w-full pl-8 pr-3 py-2 text-xs font-semibold text-slate-700 bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-petroleo-500 focus:bg-white transition">
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -228,7 +152,7 @@
                 <div id="rifas-cards-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     <div class="col-span-full py-12 text-center text-slate-400 text-xs">
                         <i class="fa-solid fa-hand-pointer text-2xl text-slate-300 mb-2 block"></i>
-                        Selecione uma categoria acima para visualizar os dados.
+                        Selecione uma categoria acima ou busque por nome para visualizar os dados.
                     </div>
                 </div>
             </div>
@@ -319,34 +243,12 @@
     <script>
         const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyuvA9V-65xnb7pth7-YcHolv9RTHmFSEu_JPzHASgzqWN1mM_oKzyV-jmuRSvShjLVwQ/exec'.trim();
 
-        let dailyChart = null;
         let globalRifasLista = [];
         let groupedPeopleData = {};
 
         document.addEventListener('DOMContentLoaded', () => {
             fetchSheetData();
         });
-
-        function switchTab(tab) {
-            const btnVendas = document.getElementById('nav-vendas');
-            const btnRifas = document.getElementById('nav-rifas');
-            const contentVendas = document.getElementById('tab-vendas');
-            const contentRifas = document.getElementById('tab-rifas');
-
-            if (tab === 'vendas') {
-                contentVendas.classList.remove('hidden');
-                contentRifas.classList.add('hidden');
-                
-                btnVendas.className = "px-4 py-2.5 font-medium text-xs border-b-2 border-amber-400 text-amber-400 flex items-center gap-2 transition-colors";
-                btnRifas.className = "px-4 py-2.5 font-medium text-xs border-b-2 border-transparent text-petroleo-300 hover:text-white flex items-center gap-2 transition-colors";
-            } else if (tab === 'rifas') {
-                contentVendas.classList.add('hidden');
-                contentRifas.classList.remove('hidden');
-
-                btnRifas.className = "px-4 py-2.5 font-medium text-xs border-b-2 border-amber-400 text-amber-400 flex items-center gap-2 transition-colors";
-                btnVendas.className = "px-4 py-2.5 font-medium text-xs border-b-2 border-transparent text-petroleo-300 hover:text-white flex items-center gap-2 transition-colors";
-            }
-        }
 
         function fetchSheetData() {
             const statusEl = document.getElementById('sync-status');
@@ -366,12 +268,6 @@
                     return response.json();
                 })
                 .then(data => {
-                    if (data.vendas) {
-                        initDashboardVendas(data.vendas);
-                    } else if (Array.isArray(data)) {
-                        initDashboardVendas(data);
-                    }
-
                     if (data.rifas) {
                         initDashboardRifas(data.rifas);
                     }
@@ -389,134 +285,6 @@
                     statusEl.className = "inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-rose-500/20 text-rose-300 border border-rose-500/30";
                     statusEl.innerHTML = '<span class="w-2 h-2 rounded-full bg-rose-400"></span> Erro de conexão';
                 });
-        }
-
-        // Lógica da Aba Vendas
-        function initDashboardVendas(data) {
-            if (!data || data.length === 0) return;
-
-            // Nomes fixos do cabeçalho conforme solicitado
-            const headers = ['Produto', '25/07', '27/07', '28/07', '29/07', '30/07', 'Total'];
-            const rawRows = data.slice(1);
-
-            const activeRows = rawRows.filter(row => (Number(row[6]) || 0) > 0);
-
-            activeRows.sort((a, b) => {
-                const nameA = (a[0] || '').toString().toLowerCase();
-                const nameB = (b[0] || '').toString().toLowerCase();
-                return nameA.localeCompare(nameB, 'pt-BR');
-            });
-
-            const headerEl = document.getElementById('table-header');
-            headerEl.innerHTML = headers.map((h, idx) => `
-                <th class="px-4 py-3 ${idx === 0 ? 'text-left' : 'text-center'} ${idx === headers.length - 1 ? 'bg-petroleo-100 text-petroleo-950 font-extrabold' : ''}">
-                    ${h}
-                </th>
-            `).join('');
-
-            const bodyEl = document.getElementById('table-body');
-            const dailyTotals = new Array(headers.length - 1).fill(0);
-            let topProduct = { name: '', qty: 0 };
-
-            bodyEl.innerHTML = activeRows.map((row, rowIdx) => {
-                const productName = row[0] || 'Sem Nome';
-                const totalQty = Number(row[6]) || 0;
-
-                if (totalQty > topProduct.qty) {
-                    topProduct = { name: productName, qty: totalQty };
-                }
-
-                for (let i = 1; i < row.length; i++) {
-                    dailyTotals[i - 1] += Number(row[i]) || 0;
-                }
-
-                const bgRowClass = rowIdx % 2 === 0 ? 'bg-white' : 'bg-slate-50/50';
-
-                return `
-                    <tr class="${bgRowClass} hover:bg-petroleo-50/40 transition">
-                        <td class="px-4 py-2.5 font-medium text-slate-800">${productName}</td>
-                        ${row.slice(1, -1).map(val => `<td class="px-4 py-2.5 text-center font-normal text-slate-600">${val || 0}</td>`).join('')}
-                        <td class="px-4 py-2.5 text-center font-bold text-petroleo-800 bg-petroleo-50/30">${totalQty}</td>
-                    </tr>
-                `;
-            }).join('');
-
-            const footerEl = document.getElementById('table-footer');
-            footerEl.innerHTML = `
-                <td class="px-4 py-3 font-bold text-slate-900">TOTAL</td>
-                ${dailyTotals.slice(0, -1).map(val => `<td class="px-4 py-3 text-center font-bold">${val}</td>`).join('')}
-                <td class="px-4 py-3 text-center font-black text-petroleo-950 text-sm bg-petroleo-200/80">${dailyTotals[dailyTotals.length - 1]}</td>
-            `;
-
-            document.getElementById('kpi-top-product').innerText = topProduct.name || 'Nenhum';
-            document.getElementById('kpi-top-product-qty').innerText = `${topProduct.qty.toLocaleString('pt-BR')} unidades vendidas`;
-
-            const dayNames = headers.slice(1, -1);
-            const daySums = dailyTotals.slice(0, -1);
-            let peakDayIdx = 0;
-            let peakDayQty = 0;
-
-            daySums.forEach((val, idx) => {
-                if (val > peakDayQty) {
-                    peakDayQty = val;
-                    peakDayIdx = idx;
-                }
-            });
-
-            document.getElementById('kpi-peak-day').innerText = dayNames[peakDayIdx] || '--';
-            document.getElementById('kpi-peak-day-qty').innerText = `${peakDayQty.toLocaleString('pt-BR')} itens comercializados`;
-
-            if (dailyChart) dailyChart.destroy();
-            const ctxDaily = document.getElementById('chart-daily-sales').getContext('2d');
-            dailyChart = new Chart(ctxDaily, {
-                type: 'line',
-                data: {
-                    labels: dayNames,
-                    datasets: [{
-                        label: 'Itens Vendidos',
-                        data: daySums,
-                        borderColor: '#15333e',
-                        backgroundColor: 'rgba(21, 51, 62, 0.12)',
-                        fill: true,
-                        tension: 0.25,
-                        pointRadius: 6,
-                        pointHoverRadius: 8,
-                        pointBackgroundColor: '#15333e'
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: { 
-                        legend: { display: false },
-                        tooltip: { padding: 10, cornerRadius: 8 }
-                    },
-                    scales: {
-                        x: { grid: { display: false }, ticks: { font: { size: 11 } } },
-                        y: { beginAtZero: true, grid: { color: '#f1f5f9' }, ticks: { font: { size: 11 } } }
-                    }
-                }
-            });
-        }
-
-        // Search Filter for Sales Table
-        function filterTable() {
-            const input = document.getElementById("table-search");
-            const filter = input.value.toLowerCase();
-            const tbody = document.getElementById("table-body");
-            const tr = tbody.getElementsByTagName("tr");
-
-            for (let i = 0; i < tr.length; i++) {
-                const td = tr[i].getElementsByTagName("td")[0];
-                if (td) {
-                    const txtValue = td.textContent || td.innerText;
-                    if (txtValue.toLowerCase().indexOf(filter) > -1) {
-                        tr[i].style.display = "";
-                    } else {
-                        tr[i].style.display = "none";
-                    }
-                }
-            }
         }
 
         // Cards de Rifas (B17:C19)
@@ -565,19 +333,20 @@
                 categorias.map(c => `<option value="${c}">${c}</option>`).join('');
         }
 
-        // Renderiza os Cards das Pessoas
+        // Renderiza os Cards das Pessoas (Com filtro de Categoria e filtro de Nome)
         function renderRifasFiltradas() {
             const selectedCat = document.getElementById('select-categoria').value;
+            const searchName = document.getElementById('search-nome').value.toLowerCase().trim();
             const container = document.getElementById('rifas-cards-container');
             const summaryBox = document.getElementById('rifas-filter-summary');
 
-            if (!selectedCat) {
+            if (!selectedCat && !searchName) {
                 summaryBox.classList.add('hidden');
                 summaryBox.classList.remove('flex');
                 container.innerHTML = `
                     <div class="col-span-full py-12 text-center text-slate-400 text-xs">
                         <i class="fa-solid fa-hand-pointer text-2xl text-slate-300 mb-2 block"></i>
-                        Selecione uma categoria acima para visualizar os dados.
+                        Selecione uma categoria acima ou busque por nome para visualizar os dados.
                     </div>
                 `;
                 return;
@@ -602,8 +371,12 @@
                 
                 const valO = (row[13] !== undefined && row[13] !== null) ? row[13].toString().trim() : ''; // Coluna N
 
-                // REGRA: Categoria (Col A) == selecionada, Coluna N/O em branco ("") e Nome existe
-                if (cat === selectedCat && valO === "" && nome !== "") {
+                // Validações do Filtro
+                const matchesCat = !selectedCat || cat === selectedCat;
+                const matchesName = !searchName || nome.toLowerCase().includes(searchName);
+
+                // REGRA: Categoria compatível, Nome compatível, Coluna N/O em branco ("") e Nome existe
+                if (matchesCat && matchesName && valO === "" && nome !== "") {
                     if (!groupedPeopleData[nome]) {
                         groupedPeopleData[nome] = {
                             nome: nome,
@@ -639,7 +412,7 @@
                 container.innerHTML = `
                     <div class="col-span-full py-12 text-center text-slate-400 text-xs">
                         <i class="fa-solid fa-circle-check text-2xl text-emerald-400 mb-2 block"></i>
-                        Nenhuma pendência encontrada para esta categoria!
+                        Nenhuma pendência encontrada com os filtros selecionados!
                     </div>
                 `;
                 return;
@@ -653,7 +426,6 @@
             container.innerHTML = sortedPeopleNames.map(personName => {
                 const person = groupedPeopleData[personName];
                 const phoneDisplay = person.celular || person.fone || 'Sem Contato';
-                const hasPhone = Boolean(person.celular || person.fone);
 
                 return `
                     <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 flex flex-col justify-between hover:border-petroleo-300 hover:shadow-md transition group">
